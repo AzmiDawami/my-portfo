@@ -15,6 +15,9 @@ const themeIcon = document.getElementById('themeIcon');
 const discordIframe = document.getElementById('discord-embed');
 const spotifyIframe = document.getElementById('spotify-embed');
 const currentYearText = document.getElementById('currentYear');
+const projectsCarousel = document.getElementById('projectsCarousel');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
 
 // ==========================================================================
 // THEME MANAGEMENT
@@ -55,6 +58,31 @@ const setTheme = (isDark) => {
 };
 
 // ==========================================================================
+// PROJECTS SLIDER NAVIGATION
+// ==========================================================================
+const initProjectsSlider = () => {
+  if (!projectsCarousel || !prevBtn || !nextBtn) return;
+
+  // Klik Panah Kanan
+  nextBtn.addEventListener('click', () => {
+    const card = projectsCarousel.querySelector('.project-card');
+    if (card) {
+      const cardWidth = card.offsetWidth;
+      projectsCarousel.scrollBy({ left: cardWidth + 16, behavior: 'smooth' });
+    }
+  });
+
+  // Klik Panah Kiri
+  prevBtn.addEventListener('click', () => {
+    const card = projectsCarousel.querySelector('.project-card');
+    if (card) {
+      const cardWidth = card.offsetWidth;
+      projectsCarousel.scrollBy({ left: -(cardWidth + 16), behavior: 'smooth' });
+    }
+  });
+};
+
+// ==========================================================================
 // INITIALIZATION
 // ==========================================================================
 const init = () => {
@@ -74,6 +102,9 @@ const init = () => {
       setTheme(!isCurrentlyDark);
     });
   }
+
+  // 4. Inisialisasi Slider Proyek
+  initProjectsSlider();
 };
 
 // Jalankan inisialisasi saat script dimuat

@@ -27,6 +27,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  transition: max-width 0.3s ease;
 }
 
 /* ==========================================================================
@@ -129,12 +130,39 @@ h2 {
 }
 
 /* ==========================================================================
-   6. PROJECT CARD COMPONENT (DARK MODE DEFAULT)
+   6. PROJECT CARD & SLIDER COMPONENT (DARK MODE DEFAULT)
    ========================================================================== */
-.project-card {
+.projects-slider-wrapper {
+  position: relative;
   width: 100%;
-  max-width: 380px;
-  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.projects-carousel {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  padding: 10px 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Menyembunyikan Scrollbar */
+.projects-carousel::-webkit-scrollbar {
+  display: none;
+}
+.projects-carousel {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.project-card {
+  flex: 0 0 100%;
+  max-width: 100%;
+  scroll-snap-align: center;
   background-color: #121418;
   border: 1px solid #22262f;
   border-radius: 16px;
@@ -268,7 +296,7 @@ h2 {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Memberi jarak antara tombol baru dan tombol View Project */
+  gap: 10px;
 }
 
 .project-btn {
@@ -281,7 +309,7 @@ h2 {
   background-color: #161a22;
   border: 1px solid #2a303c;
   border-radius: 8px;
-  color: #3b82f6; /* Warna biru terang saat Dark Mode */
+  color: #3b82f6;
   font-size: 0.875rem;
   font-weight: 600;
   text-decoration: none;
@@ -295,12 +323,49 @@ h2 {
   opacity: 1;
 }
 
-/* Aturan tombol nonaktif
-.project-btn.disabled {
-  pointer-events: none; /* Mematikan semua aksi klik/sentuhan 
-  cursor: not-allowed;  /* Menampilkan ikon dilarang 
-  opacity: 0.6;         /* Membuat tampilan agak redup 
-} */
+/* Tombol Navigasi Panah Slider */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid #ccc;
+  color: #121212;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
+}
+
+.nav-btn:hover {
+  transform: translateY(-50%) scale(1.08);
+  background-color: #ffffff;
+}
+
+.prev-btn {
+  left: -10px;
+}
+
+.next-btn {
+  right: -10px;
+}
+
+body.dark-mode .nav-btn {
+  background-color: rgba(30, 34, 42, 0.9);
+  border-color: #3b4252;
+  color: #ffffff;
+}
+
+body.dark-mode .nav-btn:hover {
+  background-color: #2b303c;
+}
 
 /* ==========================================================================
    7. PROJECT CARD LIGHT MODE STYLES
@@ -345,10 +410,9 @@ body:not(.dark-mode) .tag {
 body:not(.dark-mode) .project-btn {
   background-color: #f3f4f6;
   border-color: #e5e7eb;
-  color: #2563eb; /* Warna biru saat Light Mode */
+  color: #2563eb;
 }
 
-/* Untuk Mode Terang (Light Mode) */
 body:not(.dark-mode) .project-btn:hover {
   cursor: pointer;
   background-color: #e5e7eb;
@@ -491,10 +555,12 @@ body.dark-mode .footer {
 }
 
 /* ==========================================================================
-   11. MEDIA QUERIES
+   11. MEDIA QUERIES (TABLET & DESKTOP)
    ========================================================================== */
 @media screen and (min-width: 600px) {
+  /* Memperluas kontainer utama di tablet & laptop agar muat 2 kolom */
   .container {
+    max-width: 800px;
     padding-top: 40px;
     padding-bottom: 40px;
   }
@@ -511,5 +577,24 @@ body.dark-mode .footer {
   .floating-buttons {
     bottom: 30px;
     right: 30px;
+  }
+
+  /* Sembunyikan tombol navigasi slider di tablet & laptop */
+  .nav-btn {
+    display: none;
+  }
+
+  /* Ubah carousel menjadi Layout Grid 2 Kolom */
+  .projects-carousel {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    overflow-x: visible;
+    gap: 20px;
+    padding: 0;
+  }
+
+  .project-card {
+    flex: initial;
+    max-width: 100%;
   }
 }

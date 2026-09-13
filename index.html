@@ -63,69 +63,127 @@
       <section class="section">
         <h2>My Projects</h2>
 
-        <!-- Project Card Component -->
-        <article class="project-card">
-          <!-- Pratinjau Gambar -->
-          <div class="card-preview">
-            <!-- <span class="badge-in-progress">
-              <span class="badge-dot"></span>
-              In Progress
-            </span> -->
-            <img src="image.png" alt="" class="preview-img" loading="lazy" />
+        <div class="projects-slider-wrapper">
+          <!-- Tombol Navigasi Panah Kiri -->
+          <button class="nav-btn prev-btn" id="prevBtn" aria-label="Proyek Sebelumnya">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+
+          <!-- Track Carousel / Grid -->
+          <div class="projects-carousel" id="projectsCarousel">
+            
+            <!-- Kartu Proyek 1 -->
+            <article class="project-card">
+              <div class="card-preview">
+                <img src="image.png" alt="Counter (without) Strike" class="preview-img" loading="lazy" />
+              </div>
+
+              <div class="card-body">
+                <div class="card-meta">
+                  <a
+                    href="#"
+                    class="external-link"
+                    aria-label="Buka tautan proyek"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  ></a>
+                </div>
+
+                <h3 class="card-title">Counter (without) Strike</h3>
+                <p class="card-description">
+                  A minimalist counter web application designed for simple tallying
+                  directly in the browser.
+                </p>
+
+                <div class="tags-container">
+                  <span class="tag">HTML</span>
+                  <span class="tag">CSS</span>
+                  <span class="tag">JavaScript</span>
+                </div>
+
+                <div class="card-action">
+                  <a
+                    href="https://azmidawami.github.io/Counter-without-Strike/"
+                    class="project-btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fab fa-github"></i>
+                    <span>View on GitHub</span>
+                  </a>
+
+                  <a
+                    href="https://azmidawami.github.io/Counter-without-Strike/"
+                    class="project-btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                    <span>View project</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Kartu Proyek 2 -->
+            <article class="project-card">
+              <div class="card-preview">
+                <img src="PraySched.png" alt="PraySched" class="preview-img" loading="lazy" />
+              </div>
+
+              <div class="card-body">
+                <div class="card-meta">
+                  <a
+                    href="#"
+                    class="external-link"
+                    aria-label="Buka tautan proyek"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  ></a>
+                </div>
+
+                <h3 class="card-title">PraySched</h3>
+                <p class="card-description">
+                  A simple prayer schedule application to help you manage your daily prayers.
+                </p>
+
+                <div class="tags-container">
+                  <span class="tag">HTML</span>
+                  <span class="tag">CSS</span>
+                  <span class="tag">JavaScript</span>
+                </div>
+
+                <div class="card-action">
+                  <a
+                    href="https://github.com/AzmiDawami/PraySched"
+                    class="project-btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fab fa-github"></i>
+                    <span>View on GitHub</span>
+                  </a>
+
+                  <a
+                    href="https://github.com/AzmiDawami/PraySched"
+                    class="project-btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fas fa-arrow-up-right-from-square"></i>
+                    <span>View project</span>
+                  </a>
+                </div>
+              </div>
+            </article>
+
           </div>
 
-          <!-- Konten Kartu -->
-          <div class="card-body">
-            <div class="card-meta">
-              <!-- <span class="category-year">Full-stack platform &bull; 2026</span> -->
-              <a
-                href="#"
-                class="external-link"
-                aria-label="Buka tautan proyek"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <!-- <i class="fas fa-arrow-up-right-from-square"></i> -->
-              </a>
-            </div>
-
-            <h3 class="card-title">Counter (without) Strike</h3>
-            <p class="card-description">
-              A minimalist counter web application designed for simple tallying
-              directly in the browser.
-            </p>
-
-            <div class="tags-container">
-              <span class="tag">HTML</span>
-              <span class="tag">CSS</span>
-              <span class="tag">JavaScript</span>
-            </div>
-
-            <div class="card-action">
-              <!-- 1. Tombol aksi baru yang berada di atas View Project -->
-              <a
-                href="https://azmidawami.github.io/Counter-without-Strike/"
-                class="project-btn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i class="fab fa-github"></i>
-                <span>View on GitHub</span>
-              </a>
-
-              <!-- 2. Tombol View Project yang sudah diberi link & diaktifkan -->
-              <a
-                href="https://azmidawami.github.io/Counter-without-Strike/"
-                class="project-btn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <i class="fas fa-arrow-up-right-from-square"></i>
-                <span>View project</span>
-              </a>
-            </div>
-          </div>
-        </article>
+          <!-- Tombol Navigasi Panah Kanan -->
+          <button class="nav-btn next-btn" id="nextBtn" aria-label="Proyek Selanjutnya">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
       </section>
 
       <!-- Bagian Toko / Shop -->
